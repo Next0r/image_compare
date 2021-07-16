@@ -2,7 +2,7 @@ const path = require("path");
 
 const { readImage } = require("./readImage");
 const { compareImages } = require("./compareImages");
-const { createDifferenceStats } = require("./createDifferenceStats");
+const { computeDifferenceStats } = require("./computeDifferenceStats");
 const { writeImageBW } = require("./writeImage");
 const { saveJSON } = require("./saveJSON");
 
@@ -15,27 +15,15 @@ const main = () => {
   // const png3 = readImage(path.join(resPath, "glass_opt_02.png"));
 
   let differenceArray = compareImages(png1, png2);
-  const stats = createDifferenceStats(differenceArray);
+  const stats = computeDifferenceStats(differenceArray);
   writeImageBW(
     png1.width,
     png2.height,
-    new Uint8Array(stats.maxValueNormalized),
+    new Uint8Array(stats.vectors.maxValueNormalized),
     outPath,
     "test"
   );
-  saveJSON(
-    {
-      min: stats.min,
-      max: stats.max,
-      maxOneScaled: stats.maxOneScaled,
-      minOneScaled: stats.minOneScaled,
-      sum: stats.sum,
-      average: stats.average,
-      stdDev: stats.stdDev,
-    },
-    outPath,
-    "test"
-  );
+  saveJSON(stats.scalars, outPath, "test");
 
   console.log();
 };

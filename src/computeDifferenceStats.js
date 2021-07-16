@@ -3,9 +3,9 @@
  * @param {number} maxDifference
  * @param {number} maxValue
  */
-const createDifferenceStats = (
+const computeDifferenceStats = (
   differenceArray = [],
-  maxDifference = 510,
+  maxDifference = 441.6729599, // max difference as euler distance between [0,0,0,255] and [255,255,255,255]
   maxValue = 255
 ) => {
   if (differenceArray.length < 1) {
@@ -34,6 +34,7 @@ const createDifferenceStats = (
   }
 
   const average = sum / differenceArray.length;
+  const averageOneScaled = average / maxDifference;
   let stdDev = 0;
   const maxOneScaled = max / maxDifference;
   const minOneScaled = min / maxDifference;
@@ -45,20 +46,27 @@ const createDifferenceStats = (
   }
 
   stdDev = Math.sqrt(stdDev / (differenceArray.length - 1));
+  const stdDevOneScaled = stdDev / maxDifference;
 
   return {
-    maxScaled,
-    oneScaled,
-    normalized,
-    maxValueNormalized,
-    min,
-    max,
-    maxOneScaled,
-    minOneScaled,
-    sum,
-    average,
-    stdDev,
+    vectors: {
+      maxScaled,
+      oneScaled,
+      normalized,
+      maxValueNormalized,
+    },
+    scalars: {
+      min,
+      max,
+      maxOneScaled,
+      minOneScaled,
+      sum,
+      average,
+      averageOneScaled,
+      stdDev,
+      stdDevOneScaled,
+    },
   };
 };
 
-module.exports.createDifferenceStats = createDifferenceStats;
+module.exports.computeDifferenceStats = computeDifferenceStats;
