@@ -5,16 +5,13 @@
  */
 const computeDifferenceStats = (
   differenceArray = [],
-  maxDifference = 441.6729599, // max difference as euler distance between [0,0,0,255] and [255,255,255,255]
-  maxValue = 255
+  maxDifference = 441.6729599 // max difference as euler distance between [0,0,0,255] and [255,255,255,255]
 ) => {
   if (differenceArray.length < 1) {
     throw new Error("Difference array must contain at least one element");
   }
 
-  const maxScaled = [];
   const normalized = [];
-  const maxValueNormalized = [];
   const oneScaled = [];
   let sum = 0;
 
@@ -28,8 +25,7 @@ const computeDifferenceStats = (
       min = element;
     }
 
-    maxScaled.push(element / maxDifference);
-    oneScaled.push(element / maxValue);
+    oneScaled.push(element / maxDifference);
     sum += element;
   }
 
@@ -41,7 +37,6 @@ const computeDifferenceStats = (
 
   for (element of differenceArray) {
     normalized.push(element / max);
-    maxValueNormalized.push(normalized[normalized.length - 1] * maxValue);
     stdDev += (element - average) * (element - average);
   }
 
@@ -50,10 +45,8 @@ const computeDifferenceStats = (
 
   return {
     vectors: {
-      maxScaled,
       oneScaled,
       normalized,
-      maxValueNormalized,
     },
     scalars: {
       min,
