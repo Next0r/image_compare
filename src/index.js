@@ -9,9 +9,17 @@ const {
   selectCompareFunction,
   readComparedImageNames,
   readOutputName,
+  helpRequest,
+  printHelp,
 } = require("./processManagement");
 
 const main = () => {
+  const didRequestHelp = helpRequest();
+  if (didRequestHelp) {
+    printHelp();
+    return;
+  }
+
   const compareFunction = selectCompareFunction();
   const imageNames = readComparedImageNames();
   const outputName = readOutputName();

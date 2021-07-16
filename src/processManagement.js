@@ -56,3 +56,34 @@ const readOutputName = () => {
 };
 
 module.exports.readOutputName = readOutputName;
+
+const helpRequest = () => {
+  for (let i = 2; i < process.argv.length; i += 1) {
+    if (process.argv[i] === "-h" || process.argv[i] === "--help") {
+      return true;
+    }
+  }
+  return false;
+};
+
+module.exports.helpRequest = helpRequest;
+
+const printHelp = () => {
+  const help = `
+        Usage example: node index.js --euler -i img.png img2.png -o outputImage\n
+          To select comparison method use:
+            -c | --chebyshev
+            -m | --manhattan
+            -e | --euler (default if nothing specified)\n
+          Input files can be read from 'res' directory e.g.:
+            -i image1.png image2.png
+            -image photoOne.png photoTwo.png\n
+          Output files will be saved in 'out' directory as 'png' file and 'json'
+          '<name>_stats' file with statistics, to specify output use for example:
+            -o myOutput
+            -output differenceTest1
+    `;
+  console.log(help);
+};
+
+module.exports.printHelp = printHelp;
