@@ -5,7 +5,7 @@
  */
 const computeDifferenceStats = (
   differenceArray = [],
-  maxDifference = 441.6729599 // max difference as euler distance between [0,0,0,255] and [255,255,255,255]
+  maxDifference = 441.6729599 // max difference as euclidean distance between [0,0,0,255] and [255,255,255,255]
 ) => {
   if (differenceArray.length < 1) {
     throw new Error("Difference array must contain at least one element");

@@ -1,4 +1,4 @@
-const eulerCompareFunction = (rgba1 = [], rgba2 = []) => {
+const euclideanCompareFunction = (rgba1 = [], rgba2 = []) => {
   if (rgba1.length !== rgba2.length) {
     throw new Error("Color vectors have different length");
   }
@@ -11,4 +11,4 @@ const eulerCompareFunction = (rgba1 = [], rgba2 = []) => {
   return Math.sqrt(squareDiffArray.reduce((p, c) => p + c));
 };
 
-module.exports.eulerCompareFunction = eulerCompareFunction;
+module.exports.euclideanCompareFunction = euclideanCompareFunction;

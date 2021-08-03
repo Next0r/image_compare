@@ -1,9 +1,9 @@
 const { manhattanCompareFunction } = require("./manhattanCompareFunction");
 const { chebyshevCompareFunction } = require("./chebyshevCompareFunction");
-const { eulerCompareFunction } = require("./eulerCompareFunction");
+const { euclideanCompareFunction } = require("./euclideanCompareFunction");
 
 const selectCompareFunction = () => {
-  let compareFunction = eulerCompareFunction;
+  let compareFunction = euclideanCompareFunction;
   let maxDistance = 441.6729559;
   for (value of process.argv) {
     if (value === `-c` || value === "--chebyshev") {
@@ -70,11 +70,11 @@ module.exports.helpRequest = helpRequest;
 
 const printHelp = () => {
   const help = `
-        Usage example: node index.js --euler -i img.png img2.png -o outputImage\n
+        Usage example: node index.js --euclidean -i img.png img2.png -o outputImage\n
           To select comparison method use:
             -c | --chebyshev
             -m | --manhattan
-            -e | --euler (default if nothing specified)\n
+            -e | --euclidean (default if nothing specified)\n
           Input files can be read from 'res' directory e.g.:
             -i image1.png image2.png
             -image photoOne.png photoTwo.png\n

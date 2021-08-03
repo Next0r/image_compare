@@ -1,5 +1,5 @@
 const { PNG } = require("pngjs");
-const { eulerCompareFunction } = require("./eulerCompareFunction");
+const { euclideanCompareFunction } = require("./euclideanCompareFunction");
 
 /**
  * @callback compareFunction
@@ -16,7 +16,7 @@ const { eulerCompareFunction } = require("./eulerCompareFunction");
 const compareImages = (
   image1,
   image2,
-  compareFunction = eulerCompareFunction
+  compareFunction = euclideanCompareFunction
 ) => {
   const buffer1 = new Uint8Array(image1.data);
   const buffer2 = new Uint8Array(image2.data);

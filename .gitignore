@@ -1,6 +1,7 @@
 out
 res
 .vscode
+compare.bat
 
 # Logs
 logs
