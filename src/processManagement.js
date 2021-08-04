@@ -77,11 +77,11 @@ const printHelp = () => {
             -e | --euclidean (default if nothing specified)\n
           Input files can be read from 'res' directory e.g.:
             -i image1.png image2.png
-            -image photoOne.png photoTwo.png\n
+            --input photoOne.png photoTwo.png\n
           Output files will be saved in 'out' directory as 'png' file and 'json'
           '<name>_stats' file with statistics, to specify output use for example:
             -o myOutput
-            -output differenceTest1
+            --output differenceTest1
     `;
   console.log(help);
 };
